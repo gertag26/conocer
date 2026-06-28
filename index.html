@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Germán Tagliaferri — Amway Argentina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --jade:    #1A6B4A;
+  --jade-lt: #2A8A60;
+  --gold:    #C8973A;
+  --gold-lt: #E8B55A;
+  --ink:     #0E1A14;
+  --fog:     #F5F7F5;
+  --white:   #FFFFFF;
+  --mid:     #4A6358;
+  --border:  #D4E4DC;
+  --warm:    #FBF9F6;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--white); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 5%;
+  background: rgba(14,26,20,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200,151,58,0.18);
+}
+.nav-logo { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--gold-lt); text-decoration:none; letter-spacing:.04em; }
+.nav-links { display:flex; gap:1.8rem; align-items:center; }
+.nav-links a { color:rgba(255,255,255,.72); text-decoration:none; font-size:.78rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; transition:color .2s; }
+.nav-links a:hover { color:var(--gold-lt); }
+.nav-cta { background:var(--gold) !important; color:var(--ink) !important; padding:.45rem 1.1rem; border-radius:5px; font-weight:700 !important; }
+.nav-cta:hover { background:var(--gold-lt) !important; }
+
+/* HERO */
+#hero {
+  min-height:100vh;
+  background:linear-gradient(140deg,#071209 0%,#0E2018 45%,#162E1E 100%);
+  display:flex; align-items:center;
+  padding:110px 5% 70px;
+  position:relative; overflow:hidden;
+}
+.hero-orb { position:absolute; border-radius:50%; filter:blur(90px); pointer-events:none; }
+.orb1 { width:500px; height:500px; background:rgba(26,107,74,.25); top:-100px; right:5%; }
+.orb2 { width:300px; height:300px; background:rgba(200,151,58,.12); bottom:0; left:10%; }
+.hero-inner { max-width:1200px; margin:0 auto; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; position:relative; z-index:1; }
+.hero-tag { display:inline-flex; align-items:center; gap:.5rem; font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.4rem; }
+.hero-tag::before { content:''; display:block; width:24px; height:2px; background:var(--gold); }
+h1 { font-family:'Playfair Display',serif; font-size:clamp(2.4rem,4vw,3.7rem); font-weight:900; line-height:1.08; color:#fff; margin-bottom:1.4rem; }
+h1 em { color:var(--gold-lt); font-style:italic; }
+.hero-human { font-size:1.05rem; line-height:1.8; color:rgba(255,255,255,.72); max-width:500px; margin-bottom:2.2rem; }
+.hero-human strong { color:#fff; font-weight:600; }
+.hero-proof { display:flex; gap:2rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+.hp-num { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:900; color:var(--gold-lt); }
+.hp-label { font-size:.65rem; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.1em; margin-top:.1rem; }
+.hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-p { background:var(--gold); color:var(--ink); padding:.9rem 2rem; border-radius:6px; font-weight:700; font-size:.88rem; text-decoration:none; transition:all .2s; display:inline-block; }
+.btn-p:hover { background:var(--gold-lt); transform:translateY(-2px); box-shadow:0 8px 28px rgba(200,151,58,.35); }
+.btn-g { border:1.5px solid rgba(255,255,255,.3); color:#fff; padding:.9rem 2rem; border-radius:6px; font-weight:500; font-size:.88rem; text-decoration:none; transition:all .2s; display:inline-block; }
+.btn-g:hover { border-color:var(--gold); color:var(--gold); }
+.hero-card { background:rgba(255,255,255,.05); border:1px solid rgba(200,151,58,.22); border-radius:22px; padding:2.5rem; backdrop-filter:blur(12px); max-width:400px; margin:0 auto; }
+.hc-avatar { width:110px; height:110px; border-radius:50%; margin:0 auto 1rem; background:linear-gradient(135deg,#1A6B4A,#2A8A60); border:3px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:2.4rem; color:var(--gold); font-weight:700; }
+.hc-name { text-align:center; font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; color:#fff; }
+.hc-role { text-align:center; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:1.6rem; }
+.hc-divider { height:1px; background:rgba(255,255,255,.1); margin-bottom:1.4rem; }
+.hc-quote { font-size:.85rem; line-height:1.75; color:rgba(255,255,255,.68); font-style:italic; text-align:center; margin-bottom:1.4rem; }
+.hc-tags { display:flex; flex-wrap:wrap; gap:.4rem; justify-content:center; }
+.hc-tag { background:rgba(26,107,74,.35); border:1px solid rgba(26,107,74,.5); color:#7FCCA0; font-size:.62rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:.25rem .7rem; border-radius:20px; }
+
+/* TRUST BAR */
+#trust { background:var(--jade); padding:1.8rem 5%; }
+.trust-row { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.ti { display:flex; align-items:center; gap:.7rem; }
+.ti-icon { font-size:1.5rem; flex-shrink:0; }
+.ti-text { font-size:.73rem; font-weight:600; color:#fff; line-height:1.4; text-transform:uppercase; letter-spacing:.04em; }
+
+/* SECTIONS */
+section { padding:88px 5%; }
+.max-w { max-width:1200px; margin:0 auto; }
+.eyebrow { font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--jade); display:flex; align-items:center; gap:.5rem; margin-bottom:.8rem; }
+.eyebrow::before { content:''; display:block; width:18px; height:2px; background:var(--jade); }
+h2 { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,3vw,2.7rem); font-weight:900; line-height:1.15; color:var(--ink); margin-bottom:.9rem; }
+h2 em { color:var(--jade); font-style:italic; }
+.section-lead { font-size:1rem; line-height:1.8; color:var(--mid); max-width:600px; margin-bottom:2.8rem; }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity:1; transform:none; }
+.source-note { font-size:.65rem; color:var(--mid); margin-top:.5rem; line-height:1.5; }
+.source-note a { color:var(--jade); text-decoration:underline; }
+
+/* RESULT CARDS */
+.result-card {
+  background:var(--white); border:1px solid var(--border); border-radius:16px;
+  padding:1.5rem; transition:transform .25s, box-shadow .25s;
+}
+.result-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.09); }
+.rc-icon { font-size:2.2rem; margin-bottom:.8rem; display:block; }
+.rc-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:.4rem; }
+.rc-text { font-size:.78rem; color:var(--mid); line-height:1.65; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:start; }
+
+/* NUTRILITE */
+#nutrilite { background:var(--fog); }
+.fact-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-bottom:2.5rem; }
+.fact-box { background:#fff; border-radius:14px; padding:1.5rem; border-bottom:4px solid var(--jade); }
+.fact-box.gold { border-bottom-color:var(--gold); }
+.fb-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900; color:var(--jade); line-height:1; }
+.fb-num.g { color:var(--gold); }
+.fb-label { font-size:.8rem; font-weight:700; color:var(--ink); margin:.3rem 0 .2rem; }
+.fb-text { font-size:.72rem; color:var(--mid); line-height:1.55; }
+
+.benefit-row { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; margin-bottom:2.5rem; align-items:start; }
+.ben-list { display:flex; flex-direction:column; gap:.9rem; }
+.ben-item { display:flex; gap:.9rem; align-items:flex-start; background:#fff; border-radius:10px; padding:1rem 1.1rem; border:1px solid var(--border); }
+.ben-icon { font-size:1.6rem; flex-shrink:0; }
+.ben-body h4 { font-size:.88rem; font-weight:700; color:var(--ink); margin-bottom:.25rem; }
+.ben-body p { font-size:.75rem; color:var(--mid); line-height:1.6; }
+
+.tag { display:inline-block; font-size:.6rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:.18rem .55rem; border-radius:20px; margin:.15rem .15rem 0 0; }
+.tg { background:#D4F0E2; color:#1A6B4A; }
+.tb { background:#D0E8FF; color:#1A4A7A; }
+
+/* TRACEABILITY SECTION */
+.trace-block {
+  background:linear-gradient(135deg,#0E2018,#1A3828);
+  border-radius:20px; padding:3rem; display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center;
+}
+.trace-steps { display:flex; flex-direction:column; gap:1rem; }
+.trace-step { display:flex; gap:1rem; align-items:flex-start; }
+.ts-dot { width:32px; height:32px; border-radius:50%; background:var(--jade); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:.75rem; font-weight:700; color:#fff; }
+.ts-body h4 { font-size:.88rem; font-weight:700; color:#fff; margin-bottom:.2rem; }
+.ts-body p { font-size:.73rem; color:rgba(255,255,255,.55); line-height:1.55; }
+.trace-right { text-align:center; }
+.trace-big { font-family:'Playfair Display',serif; font-size:5rem; font-weight:900; color:var(--jade-lt); line-height:1; }
+.trace-label { color:rgba(255,255,255,.6); font-size:.85rem; line-height:1.6; margin:1rem 0; }
+.trace-link { display:inline-flex; align-items:center; gap:.5rem; background:var(--jade); color:#fff; padding:.7rem 1.5rem; border-radius:8px; text-decoration:none; font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; transition:all .2s; margin-top:.5rem; }
+.trace-link:hover { background:var(--jade-lt); transform:translateY(-2px); }
+
+/* GLISTER */
+#glister { background:#fff; }
+.glister-hero {
+  background:linear-gradient(150deg,#0A1038,#1A2A5E);
+  border-radius:20px; padding:3rem; margin-bottom:2.5rem;
+  display:grid; grid-template-columns:1.2fr 1fr; gap:2rem; align-items:center;
+}
+.gh-brand-name { font-family:'Playfair Display',serif; font-size:2.5rem; font-weight:900; color:#fff; margin-bottom:.5rem; }
+.gh-tagline { font-size:.88rem; color:rgba(255,255,255,.62); line-height:1.7; margin-bottom:1.5rem; }
+.glister-facts { display:flex; flex-direction:column; gap:.8rem; }
+.gf { background:rgba(255,255,255,.08); border-radius:10px; padding:.9rem 1.1rem; }
+.gf-num { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; color:var(--gold-lt); line-height:1; }
+.gf-label { font-size:.72rem; color:rgba(255,255,255,.65); line-height:1.4; margin-top:.2rem; }
+.oral-system { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.os-card { background:var(--fog); border-radius:12px; padding:1.3rem; text-align:center; border:1px solid var(--border); transition:transform .2s, box-shadow .2s; }
+.os-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(0,0,0,.08); }
+.os-icon { font-size:2rem; margin-bottom:.6rem; }
+.os-name { font-size:.8rem; font-weight:700; color:var(--ink); margin-bottom:.3rem; }
+.os-result { font-size:.7rem; color:var(--jade); font-weight:700; margin-bottom:.25rem; }
+.os-desc { font-size:.68rem; color:var(--mid); line-height:1.5; }
+
+/* SATINIQUE */
+#satinique { background:var(--fog); }
+.satin-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center; }
+.satin-vis {
+  background:linear-gradient(160deg,#1A3828,#0E2018);
+  border-radius:20px; padding:2.5rem; display:flex; flex-direction:column; gap:1rem;
+}
+.sv-item { background:rgba(255,255,255,.07); border-radius:10px; padding:1rem 1.2rem; display:flex; align-items:center; gap:1rem; }
+.sv-icon { font-size:1.8rem; flex-shrink:0; }
+.sv-text h4 { font-size:.85rem; font-weight:700; color:#fff; margin-bottom:.2rem; }
+.sv-text p { font-size:.72rem; color:rgba(255,255,255,.55); line-height:1.5; }
+
+/* G&H */
+#gh { background:#fff; }
+.gh-split { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.gh-half { border-radius:16px; padding:2rem; border:1px solid var(--border); }
+.gh-half.prot { background:linear-gradient(135deg,#F0F8F4,#E0F2EC); border-color:rgba(26,107,74,.2); }
+.gh-half.nour { background:linear-gradient(135deg,#FDF6EC,#F5EACC); border-color:rgba(200,151,58,.2); }
+.gh-half-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--ink); margin-bottom:.4rem; }
+.gh-half-sub { font-size:.75rem; color:var(--mid); line-height:1.6; margin-bottom:1.2rem; }
+.gh-results { display:flex; flex-direction:column; gap:.6rem; }
+.gh-result { display:flex; align-items:center; gap:.7rem; font-size:.78rem; color:var(--mid); line-height:1.5; }
+.gh-result::before { content:'✓'; color:var(--jade); font-weight:700; flex-shrink:0; }
+
+/* HOME */
+#home-sec { background:var(--fog); }
+.home-comparison { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2.5rem; }
+.comp-col { border-radius:14px; padding:2rem; }
+.comp-col.bad { background:#FFF5F5; border:1px solid #FFCDD2; }
+.comp-col.good { background:linear-gradient(135deg,#F0FAF5,#E0F5EC); border:1px solid rgba(26,107,74,.25); }
+.comp-title { font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; }
+.comp-title.bad { color:#C62828; }
+.comp-title.good { color:var(--jade); }
+.comp-items { display:flex; flex-direction:column; gap:.6rem; }
+.comp-item { display:flex; align-items:flex-start; gap:.6rem; font-size:.78rem; line-height:1.55; }
+.ci-bad { color:#C62828; font-weight:600; flex-shrink:0; }
+.ci-good { color:var(--jade); font-weight:600; flex-shrink:0; }
+.home-benefits { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.hb { background:#fff; border-radius:12px; padding:1.2rem; border:1px solid var(--border); text-align:center; }
+.hb-icon { font-size:1.8rem; margin-bottom:.5rem; }
+.hb-num { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:900; color:var(--jade); line-height:1; }
+.hb-label { font-size:.68rem; color:var(--mid); line-height:1.45; margin-top:.3rem; }
+
+/* ARTISTRY */
+#artistry { background:linear-gradient(160deg,#0E0818,#1A0828); }
+#artistry h2 { color:#fff; }
+#artistry .eyebrow { color:#E8A0C0; }
+#artistry .eyebrow::before { background:#E8A0C0; }
+#artistry .section-lead { color:rgba(255,255,255,.62); }
+.art-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+.art-benefits { display:flex; flex-direction:column; gap:1rem; }
+.art-ben { border-radius:14px; padding:1.4rem; border:1px solid rgba(255,255,255,.1); transition:border-color .2s; }
+.art-ben:hover { border-color:#E8A0C0; }
+.art-ben-name { font-family:'Playfair Display',serif; font-size:.95rem; font-weight:700; color:#fff; margin-bottom:.3rem; }
+.art-ben-desc { font-size:.76rem; color:rgba(255,255,255,.52); line-height:1.6; }
+.al1 { background:rgba(180,60,100,.15); }
+.al2 { background:rgba(80,60,140,.15); }
+.al3 { background:rgba(60,120,100,.15); }
+.art-stats { display:flex; flex-direction:column; gap:1.2rem; }
+.as { background:rgba(255,255,255,.05); border-radius:14px; padding:1.4rem; border:1px solid rgba(232,160,192,.2); text-align:center; }
+.as-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900; color:#E8A0C0; line-height:1; }
+.as-label { font-size:.7rem; color:rgba(255,255,255,.45); margin-top:.3rem; line-height:1.4; }
+.as-src { font-size:.6rem; color:rgba(255,255,255,.25); margin-top:.2rem; }
+
+/* WHY AMWAY */
+#why { background:var(--warm); }
+.why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.why-card { background:#fff; border-radius:16px; padding:1.8rem; border:1px solid var(--border); position:relative; overflow:hidden; }
+.why-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--jade); }
+.wc-icon { font-size:2rem; margin-bottom:.8rem; display:block; }
+.wc-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--ink); margin-bottom:.4rem; }
+.wc-text { font-size:.78rem; color:var(--mid); line-height:1.65; }
+
+/* CTA */
+#opp-cta { background:var(--jade); padding:80px 5%; text-align:center; }
+#opp-cta h2 { color:#fff; max-width:700px; margin:0 auto 1rem; }
+#opp-cta p { color:rgba(255,255,255,.78); max-width:560px; margin:0 auto 2.2rem; font-size:1rem; line-height:1.8; }
+.cta-btns { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+.btn-wa { background:#25D366; color:#fff; padding:1rem 2.2rem; border-radius:8px; font-weight:700; font-size:.9rem; text-decoration:none; transition:all .2s; display:inline-flex; align-items:center; gap:.6rem; }
+.btn-wa:hover { background:#1DB954; transform:translateY(-2px); }
+.btn-red { background:var(--gold); color:var(--ink); padding:1rem 2.2rem; border-radius:8px; font-weight:700; font-size:.9rem; text-decoration:none; transition:all .2s; display:inline-flex; align-items:center; gap:.5rem; }
+.btn-red:hover { background:var(--gold-lt); transform:translateY(-2px); }
+.btn-ghost-w { border:2px solid rgba(255,255,255,.5); color:#fff; padding:1rem 2.2rem; border-radius:8px; font-weight:600; font-size:.9rem; text-decoration:none; transition:all .2s; display:inline-flex; align-items:center; gap:.5rem; }
+.btn-ghost-w:hover { border-color:#fff; background:rgba(255,255,255,.1); }
+
+/* FOOTER */
+footer { background:#070E0A; padding:2.2rem 5%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.f-brand { font-family:'Playfair Display',serif; font-size:.95rem; color:var(--gold); font-weight:700; }
+.f-links { display:flex; gap:1.8rem; }
+.f-links a { color:rgba(255,255,255,.35); text-decoration:none; font-size:.73rem; transition:color .2s; }
+.f-links a:hover { color:var(--gold); }
+.f-legal { color:rgba(255,255,255,.2); font-size:.65rem; }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-card { display:none; }
+  .trust-row { grid-template-columns:1fr 1fr; }
+  .grid-3,.why-grid { grid-template-columns:1fr; }
+  .fact-strip { grid-template-columns:1fr 1fr; }
+  .benefit-row,.satin-grid,.gh-split,.home-comparison,.art-grid,.glister-hero,.trace-block { grid-template-columns:1fr; }
+  .oral-system,.home-benefits { grid-template-columns:1fr 1fr; }
+  nav .nav-links { display:none; }
+}
+@media(max-width:560px){
+  .trust-row,.fact-strip,.oral-system,.home-benefits { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Germán · Amway</a>
+  <div class="nav-links">
+    <a href="#nutrilite">Nutrilite</a>
+    <a href="#glister">Glister</a>
+    <a href="#satinique">Satinique</a>
+    <a href="#gh">G&H</a>
+    <a href="#home-sec">Hogar</a>
+    <a href="#artistry">Artistry</a>
+    <a href="amway-negocio.html">Sistema de Ganancias</a>
+    <a class="nav-cta" href="https://amway.com.ar/german" target="_blank">Ver Catálogo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Empresario Amway · Buenos Aires, Argentina</div>
+      <h1>Productos que<br>tu cuerpo <em>nota<br>de verdad</em></h1>
+      <p class="hero-human">
+        Soy Germán, médico psiquiatra. Elegí Amway porque es la única empresa donde
+        <strong>puedo rastrear cada ingrediente desde la semilla hasta la cápsula.</strong>
+        Como médico, eso no es un detalle — es todo.
+      </p>
+      <div class="hero-proof">
+        <div><div class="hp-num">#1</div><div class="hp-label">Venta directa mundial<br><span style="font-size:.58rem;opacity:.6">DSN Global 100, 2025</span></div></div>
+        <div><div class="hp-num">90</div><div class="hp-label">Años de ciencia<br><span style="font-size:.58rem;opacity:.6">Nutrilite, desde 1934</span></div></div>
+        <div><div class="hp-num">750+</div><div class="hp-label">Patentes registradas<br><span style="font-size:.58rem;opacity:.6">Reporte Impacto Global 2024</span></div></div>
+      </div>
+      <div class="hero-btns">
+        <a class="btn-p" href="https://amway.com.ar/german" target="_blank">Ver productos →</a>
+        <a class="btn-g" href="amway-negocio.html">Conocer el sistema de ganancias</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-card">
+        <div class="hc-avatar">GT</div>
+        <div class="hc-name">Dr. Germán Tagliaferri</div>
+        <div class="hc-role">Médico · Psiquiatra · Empresario Amway</div>
+        <div class="hc-divider"></div>
+        <div class="hc-quote">"Recomiendo lo que yo mismo uso. Eso es todo."</div>
+        <div class="hc-tags">
+          <span class="hc-tag">Médico UBA</span>
+          <span class="hc-tag">Psiquiatría</span>
+          <span class="hc-tag">Nutrilite</span>
+          <span class="hc-tag">Artistry</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="trust-row">
+    <div class="ti"><div class="ti-icon">🔬</div><div class="ti-text">Respaldo científico en cada producto</div></div>
+    <div class="ti"><div class="ti-icon">🌿</div><div class="ti-text">2.400 ha de granjas orgánicas propias</div></div>
+    <div class="ti"><div class="ti-icon">🛡️</div><div class="ti-text">Garantía de satisfacción 90 días</div></div>
+    <div class="ti"><div class="ti-icon">🚚</div><div class="ti-text">Despacho directo a tu domicilio</div></div>
+  </div>
+</div>
+
+<!-- POR QUÉ AMWAY -->
+<section id="why">
+  <div class="max-w reveal">
+    <div class="eyebrow">El modelo que lo hace distinto</div>
+    <h2>¿Por qué Amway y <em>no cualquier suplemento?</em></h2>
+    <p class="section-lead">Cualquiera puede poner una cápsula en un frasco. Muy pocos pueden decirte de qué campo viene, quién la cultivó y bajo qué estándares. Eso es lo que diferencia a Amway.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="wc-icon">🌱</span>
+        <div class="wc-title">Sin intermediarios en la cadena</div>
+        <p class="wc-text">Amway produce sus propias materias primas en granjas certificadas. No compra ingredientes a proveedores externos sin control. Eso elimina adulteraciones y garantiza concentración real.</p>
+      </div>
+      <div class="why-card">
+        <span class="wc-icon">📋</span>
+        <div class="wc-title">Estándares farmacéuticos, no de góndola</div>
+        <p class="wc-text">Los laboratorios Nutrilite superan las normas GMP farmacéuticas internacionales. Cada lote es testeado antes de salir. Lo que dice la etiqueta es lo que hay adentro.</p>
+      </div>
+      <div class="why-card">
+        <span class="wc-icon">🤝</span>
+        <div class="wc-title">Garantía real de satisfacción</div>
+        <p class="wc-text">90 días de garantía de satisfacción 100%. Si el producto no te convence, lo devolvés. Sin preguntas. Es una política oficial de Amway Argentina para todos los productos.</p>
+      </div>
+      <div class="why-card">
+        <span class="wc-icon">📦</span>
+        <div class="wc-title">Sin stock, sin local, sin logística</div>
+        <p class="wc-text">Amway despacha directamente al domicilio de tu cliente. Vos solo gestionás la recomendación. La logística, el pago y el envío los maneja Amway directamente.</p>
+      </div>
+      <div class="why-card">
+        <span class="wc-icon">🎓</span>
+        <div class="wc-title">Capacitación gratuita continua</div>
+        <p class="wc-text">Acceso al Instituto de Negocios Amway, Playbook del Nuevo, cursos de producto y herramientas de venta. Todo gratuito desde el registro como empresario independiente.</p>
+      </div>
+      <div class="why-card">
+        <span class="wc-icon">💚</span>
+        <div class="wc-title">Sustentabilidad verificada</div>
+        <p class="wc-text">Agricultura regenerativa, empaques sostenibles, Safer Choice de la EPA (EE.UU.) para los productos de limpieza. Amway lleva más de 65 años con los mismos valores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUTRILITE (30%) -->
+<section id="nutrilite">
+  <div class="max-w reveal">
+    <div class="eyebrow">Suplementos · 30% del portafolio</div>
+    <h2>Nutrilite: <em>la única marca</em><br>que siembra lo que te vende</h2>
+    <p class="section-lead">Nº1 mundial en vitaminas y suplementos por 90 años consecutivos. Única con granjas orgánicas propias donde controlan cada etapa: semilla, cultivo, cosecha, extracción y producción.</p>
+
+    <div class="fact-strip">
+      <div class="fact-box">
+        <div class="fb-num">2.400+</div>
+        <div class="fb-label">Hectáreas orgánicas certificadas</div>
+        <div class="fb-text">En EE.UU., México y Brasil. Agricultura sostenible y regenerativa. Más de 4.000 canchas de fútbol bajo un mismo estándar de calidad.</div>
+        <div class="source-note">Fuente: <a href="https://nutrilitetraceability.lat" target="_blank">nutrilitetraceability.lat</a> · Amway Impact Report 2024</div>
+      </div>
+      <div class="fact-box">
+        <div class="fb-num">750+</div>
+        <div class="fb-label">Patentes y patentes pendientes</div>
+        <div class="fb-text">Innovación científica protegida. 800 expertos en investigación dedicados exclusivamente al desarrollo de Nutrilite.</div>
+        <div class="source-note">Fuente: Amway Global Impact Report 2024</div>
+      </div>
+      <div class="fact-box gold">
+        <div class="fb-num g">90</div>
+        <div class="fb-label">Años de historia ininterrumpida</div>
+        <div class="fb-text">Desde 1934. Marca #1 en ventas de vitaminas y suplementos del mundo. Presencia activa en más de 100 países.</div>
+        <div class="source-note">Fuente: Global Database 2023 · DSN Global 100, 2025</div>
+      </div>
+    </div>
+
+    <!-- TRAZABILIDAD -->
+    <div class="trace-block reveal" style="margin-bottom:2.5rem">
+      <div class="trace-steps">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:1rem">Del campo a tu cuerpo: trazabilidad total</h3>
+        <div class="trace-step">
+          <div class="ts-dot">1</div>
+          <div class="ts-body"><h4>Semilla seleccionada</h4><p>Variedades propias de plantas con concentración óptima de principios activos. Cultivadas sin pesticidas ni fertilizantes sintéticos.</p></div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-dot">2</div>
+          <div class="ts-body"><h4>Cosecha en el momento exacto</h4><p>Cada planta se cosecha cuando alcanza su pico de concentración de nutrientes. Determinado por análisis de laboratorio, no por calendario.</p></div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-dot">3</div>
+          <div class="ts-body"><h4>Procesamiento en laboratorios propios</h4><p>De la planta al extracto bajo normas GMP farmacéuticas. Sin intermediarios que puedan alterar la concentración o agregar rellenos.</p></div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-dot">4</div>
+          <div class="ts-body"><h4>Verificación lote a lote</h4><p>Cada blíster es testeado antes de salir. Podés rastrear el origen de cada ingrediente con el código de tu producto.</p></div>
+        </div>
+      </div>
+      <div class="trace-right">
+        <div class="trace-big">100%</div>
+        <div class="trace-label">Trazabilidad verificable<br>desde la semilla hasta tu mano</div>
+        <a class="trace-link" href="https://nutrilitetraceability.lat" target="_blank">🔍 Verificar origen →</a>
+      </div>
+    </div>
+
+    <!-- BENEFICIOS POR PRODUCTO -->
+    <div class="benefit-row">
+      <div class="ben-list">
+        <div class="ben-item">
+          <div class="ben-icon">🌿</div>
+          <div class="ben-body"><h4>Proteína Vegetal — ¿Qué notás?</h4><p>Más saciedad, mejor recuperación muscular, sin hinchazón ni gases. 45 porciones de soya certificada no-GMO. Sin lactosa, sin gluten. Apta para vegetarianos.</p></div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon">🔶</div>
+          <div class="ben-body"><h4>Triple Omega 3 — ¿Qué notás?</h4><p>Menos inflamación articular, mejor foco mental, apoyo cardiovascular real. Omega de peces trazados. Alta concentración EPA+DHA verificada por laboratorio.</p></div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon">⚡</div>
+          <div class="ben-body"><h4>Vitamina C Liberación Prolongada — ¿Qué notás?</h4><p>Inmunidad sostenida durante 6-8 horas. No el pico y la caída de las fórmulas convencionales. Eficacia verificada sin colorantes artificiales.</p></div>
+        </div>
+      </div>
+      <div class="ben-list">
+        <div class="ben-item">
+          <div class="ben-icon">🦴</div>
+          <div class="ben-body"><h4>Cal Mag D Plus — ¿Qué notás?</h4><p>Calcio que realmente se absorbe, gracias al magnesio y D3 que trabajan en sinergia. No sirve tomar calcio solo — esta fórmula lo resuelve.</p></div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon">💊</div>
+          <div class="ben-body"><h4>Daily Plus Multivitamínico — ¿Qué notás?</h4><p>Más energía estable durante el día, menos necesidad de "reponer" con otros suplementos. 3 meses de cobertura completa en un solo sobre diario.</p></div>
+        </div>
+        <div class="ben-item">
+          <div class="ben-icon">✨</div>
+          <div class="ben-body"><h4>HSN Cabello · Piel · Uñas — ¿Qué notás?</h4><p>Cabello más fuerte, piel más firme, uñas que no se quiebran. Resultados visibles a partir de la semana 6-8 de uso continuo. Biotina + zinc + selenio en dosis terapéuticas reales.</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="source-note" style="text-align:right">Información de productos: <a href="https://www.amway.com.ar" target="_blank">amway.com.ar</a> · <a href="https://nutrilitetraceability.lat" target="_blank">nutrilitetraceability.lat</a></p>
+  </div>
+</section>
+
+<!-- GLISTER (20%) -->
+<section id="glister">
+  <div class="max-w reveal">
+    <div class="eyebrow">Cuidado bucal · 20% del portafolio</div>
+    <h2>Glister™: <em>sistema completo</em><br>de salud bucal</h2>
+    <p class="section-lead">No es una pasta más. Es un ecosistema de cuidado bucal donde cada producto fue diseñado para trabajar en conjunto. Como un tratamiento, no un cosmético.</p>
+
+    <div class="glister-hero">
+      <div>
+        <div class="gh-brand-name">Glister™</div>
+        <div class="gh-tagline">Tu boca es la primera barrera de tu salud. Cuidarla bien no es vanidad — es prevención activa que tiene impacto en todo el organismo.</div>
+        <div class="glister-facts">
+          <div class="gf">
+            <div class="gf-num">5 en 1</div>
+            <div class="gf-label">La pasta dental Glister actúa como blanqueadora, anticaries, antigingivitis, remineralizante y control de placa — sin SLS agresivo</div>
+          </div>
+          <div class="gf">
+            <div class="gf-num">Sin SLS</div>
+            <div class="gf-label">Sin lauril sulfato de sodio. Apto para personas con mucosas sensibles, úlceras bucales o tratamientos dentales activos</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem">
+          <a href="https://latinamway.com/las/glister/#/oral-system" target="_blank" class="trace-link" style="font-size:.72rem">🦷 Ver sistema oral completo →</a>
+        </div>
+      </div>
+      <div class="glister-facts">
+        <div class="gf">
+          <div class="gf-label" style="font-size:.8rem;font-weight:700;color:#fff;margin-bottom:.6rem">¿Qué resultados notás?</div>
+        </div>
+        <div class="gf">
+          <div class="gf-label">✓ Dientes visiblemente más blancos en 4 semanas de uso continuo</div>
+        </div>
+        <div class="gf">
+          <div class="gf-label">✓ Aliento fresco durante más horas que con pastas convencionales</div>
+        </div>
+        <div class="gf">
+          <div class="gf-label">✓ Encías menos inflamadas al combinar con el enjuague Glister</div>
+        </div>
+        <div class="gf">
+          <div class="gf-label">✓ Menos sensibilidad dental al calor/frío en usuarios regulares</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="oral-system">
+      <div class="os-card">
+        <div class="os-icon">🪥</div>
+        <div class="os-name">Pasta Multiacción</div>
+        <div class="os-result">5 beneficios en 1</div>
+        <div class="os-desc">Blanqueadora + anticaries + aliento + remineralización + antigingivitis. Sin SLS.</div>
+      </div>
+      <div class="os-card">
+        <div class="os-icon">💧</div>
+        <div class="os-name">Enjuague Concentrado</div>
+        <div class="os-result">Protección de larga duración</div>
+        <div class="os-desc">Sin alcohol. Apto uso diario. Mata bacterias sin dañar la flora bucal natural.</div>
+      </div>
+      <div class="os-card">
+        <div class="os-icon">🦷</div>
+        <div class="os-name">Blanqueador Dental</div>
+        <div class="os-result">Resultados desde semana 4</div>
+        <div class="os-desc">Activa la blancura sin dañar el esmalte. Compatible con el sistema completo.</div>
+      </div>
+      <div class="os-card">
+        <div class="os-icon">🪡</div>
+        <div class="os-name">Hilo Dental + Cepillo</div>
+        <div class="os-result">Sistema integrado</div>
+        <div class="os-desc">Diseñados para trabajar con la pasta Glister. Materiales que protegen el esmalte.</div>
+      </div>
+    </div>
+    <p class="source-note" style="margin-top:1rem">Información técnica: <a href="https://latinamway.com/las/glister/#/oral-system" target="_blank">latinamway.com/las/glister</a></p>
+  </div>
+</section>
+
+<!-- SATINIQUE (10%) -->
+<section id="satinique">
+  <div class="max-w reveal">
+    <div class="eyebrow">Cuidado capilar · 10% del portafolio</div>
+    <h2>Satinique™: <em>cabello saludable</em><br>desde adentro y afuera</h2>
+    <p class="section-lead">Una línea completa para cada tipo de cabello. Sin silicona que tape el daño. Con activos que reparan la fibra capilar de verdad y resultados que el pelo seco, teñido o dañado nota desde los primeros lavados.</p>
+    <div class="satin-grid">
+      <div class="satin-vis">
+        <div class="sv-item"><div class="sv-icon">💪</div><div class="sv-text"><h4>Fortalecimiento de la fibra</h4><p>Activos que penetran el córtex del cabello. Menos quiebre, menos caída por fragilidad, más resistencia en cada lavado.</p></div></div>
+        <div class="sv-item"><div class="sv-icon">✨</div><div class="sv-text"><h4>Brillo real sin silicona</h4><p>No tapa el daño con silicona que se acumula. Actúa sobre la estructura del cabello para que brille desde adentro.</p></div></div>
+        <div class="sv-item"><div class="sv-icon">💧</div><div class="sv-text"><h4>Hidratación que dura</h4><p>La humedad no se evaporiza al secarse. El cabello mantiene su suavidad incluso en días de bajo ambiente.</p></div></div>
+        <div class="sv-item"><div class="sv-icon">🌿</div><div class="sv-text"><h4>Sin parabenos ni sulfatos agresivos</h4><p>Fórmulas que respetan el pH del cuero cabelludo. Sin resequedad ni picazón. Apto para cuero cabelludo sensible.</p></div></div>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:1rem">¿Para quién es Satinique?</h3>
+        <div class="ben-list">
+          <div class="ben-item"><div class="ben-icon">🔥</div><div class="ben-body"><h4>Cabello teñido o con química</h4><p>Repara el daño de la decoloración y el calor. Protege el color y devuelve suavidad sin pesar.</p></div></div>
+          <div class="ben-item"><div class="ben-icon">💆</div><div class="ben-body"><h4>Cuero cabelludo sensible</h4><p>Sin irritantes comunes. Limpieza suave que equilibra el sebo sin resecar ni sobreproducir.</p></div></div>
+          <div class="ben-item"><div class="ben-icon">🌊</div><div class="ben-body"><h4>Cabello opaco o sin volumen</h4><p>Activos que aportan cuerpo real. Sin el efecto pesado de las siliconas que aplanan el cabello.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- G&H (10%) -->
+<section id="gh">
+  <div class="max-w reveal">
+    <div class="eyebrow">Cuidado corporal · 10% del portafolio</div>
+    <h2>G&H™: cuidado que <em>respeta tu piel</em></h2>
+    <p class="section-lead">La piel es el órgano más grande del cuerpo. Merece productos que la nutran sin irritar, que hidraten sin obturar poros y que huelan bien sin cargar de químicos agresivos.</p>
+    <div class="gh-split">
+      <div class="gh-half prot">
+        <div class="gh-half-title">G&H Protect+</div>
+        <div class="gh-half-sub">Línea de protección y equilibrio. Para piel que necesita limpieza suave sin alterar su barrera natural.</div>
+        <div class="gh-results">
+          <div class="gh-result">pH balanceado que respeta la microbiota cutánea</div>
+          <div class="gh-result">Sin parabenos ni colorantes artificiales</div>
+          <div class="gh-result">Absorción rápida, sin residuo grasoso</div>
+          <div class="gh-result">Fragancia suave que no se impone</div>
+          <div class="gh-result">Dermatológicamente probado</div>
+        </div>
+      </div>
+      <div class="gh-half nour">
+        <div class="gh-half-title">G&H Nourish+</div>
+        <div class="gh-half-sub">Línea de nutrición profunda. Para piel seca, cuarteada o que pierde elasticidad con el tiempo.</div>
+        <div class="gh-results">
+          <div class="gh-result">Hidratación que dura más de 24 horas</div>
+          <div class="gh-result">Manteca de karité y vitamina E activos</div>
+          <div class="gh-result">Textura cremosa de absorción media, sin tapar poros</div>
+          <div class="gh-result">Apta para pieles sensibles y alérgicas</div>
+          <div class="gh-result">Fragancia suave, sin alcohol</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOME (10%) -->
+<section id="home-sec">
+  <div class="max-w reveal">
+    <div class="eyebrow">Limpieza del hogar · 10% del portafolio</div>
+    <h2>Amway Home™: <em>limpiar mejor</em>,<br>no limpiar más</h2>
+    <p class="section-lead">Biodegradables, concentrados y certificados por la EPA de EE.UU. bajo el programa Safer Choice. No solo son buenos para tu casa — son buenos para las personas que viven en ella.</p>
+
+    <div class="home-comparison">
+      <div class="comp-col bad">
+        <div class="comp-title bad">❌ Limpiadores convencionales</div>
+        <div class="comp-items">
+          <div class="comp-item"><span class="ci-bad">✗</span>Contienen fosfatos que contaminan cuencas de agua</div>
+          <div class="comp-item"><span class="ci-bad">✗</span>SLS agresivo que irrita piel y mucosas</div>
+          <div class="comp-item"><span class="ci-bad">✗</span>Envases plásticos sin concentración real</div>
+          <div class="comp-item"><span class="ci-bad">✗</span>Perfumes sintéticos que pueden generar alergias</div>
+          <div class="comp-item"><span class="ci-bad">✗</span>Sin certificación de seguridad en piel</div>
+        </div>
+      </div>
+      <div class="comp-col good">
+        <div class="comp-title good">✓ Amway Home™</div>
+        <div class="comp-items">
+          <div class="comp-item"><span class="ci-good">✓</span>Cero fosfatos. Biodegradable certificado</div>
+          <div class="comp-item"><span class="ci-good">✓</span>Fórmula suave con piel. Dermatológicamente probado</div>
+          <div class="comp-item"><span class="ci-good">✓</span>Concentrado: rinde hasta 20× más por envase</div>
+          <div class="comp-item"><span class="ci-good">✓</span>Safer Choice EPA: seguro para familia y mascotas</div>
+          <div class="comp-item"><span class="ci-good">✓</span>Certificación ecológica internacional</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-benefits">
+      <div class="hb"><div class="hb-icon">🧴</div><div class="hb-num">20×</div><div class="hb-label">más rendimiento<br>LOC vs. convencional 500ml</div></div>
+      <div class="hb"><div class="hb-icon">👕</div><div class="hb-num">100</div><div class="hb-label">lavados por envase<br>SA8 Detergente</div></div>
+      <div class="hb"><div class="hb-icon">🌊</div><div class="hb-num">0%</div><div class="hb-label">fosfato · sin cloro<br>agresivo en fórmulas</div></div>
+      <div class="hb"><div class="hb-icon">🌿</div><div class="hb-num">EPA</div><div class="hb-label">Safer Choice<br>certificado USA</div></div>
+    </div>
+    <p class="source-note" style="margin-top:1rem;text-align:right">Hoja técnica LOC: <a href="https://www.amway.com.ar/downloads/hojas/124108.pdf" target="_blank">descargar ficha técnica →</a> · Safer Choice EPA: epa.gov/saferchoice</p>
+  </div>
+</section>
+
+<!-- ARTISTRY (10%) -->
+<section id="artistry">
+  <div class="max-w reveal">
+    <div class="eyebrow">Belleza premium · 10% del portafolio</div>
+    <h2>Artistry™: donde la ciencia<br><em style="color:#E8A0C0">se vuelve belleza de verdad</em></h2>
+    <p class="section-lead">La única marca de belleza respaldada por Nutrilite™ — la marca #1 en vitaminas del mundo. 50 años de investigación dermatológica aplicada al cuidado externo de la piel.</p>
+    <div class="art-grid">
+      <div class="art-benefits">
+        <div class="art-ben al1">
+          <div class="art-ben-name">Artistry Supreme LX™ — ¿Qué notás?</div>
+          <div class="art-ben-desc">Reducción visible de arrugas finas desde la semana 4. Firmeza en pómulos y mandíbula. Luminosidad natural sin maquillaje. Cellular Energy Complex patentado — sin equivalente en el mercado masivo.</div>
+        </div>
+        <div class="art-ben al2">
+          <div class="art-ben-name">Artistry Skin Nutrition™ — ¿Qué notás?</div>
+          <div class="art-ben-desc">Hidratación que dura 24 horas reales. Piel más uniforme en tono y textura. Prevención del envejecimiento prematuro con activos nutricionales. Sin conservantes agresivos ni fragancias sintéticas.</div>
+        </div>
+        <div class="art-ben al3">
+          <div class="art-ben-name">Artistry Studio™ — ¿Qué notás?</div>
+          <div class="art-ben-desc">Colores vibrantes con fórmulas que cuidan mientras maquillan. Larga duración sin retoques. Compatibles con piel sensible. Maquillaje que no "envejece" la piel con el transcurso del día.</div>
+        </div>
+        <div style="margin-top:1.5rem">
+          <a class="btn-p" href="https://amway.com.ar/german" target="_blank" style="background:#E8A0C0;color:#0E0818">Explorar Artistry →</a>
+        </div>
+      </div>
+      <div class="art-stats">
+        <div class="as">
+          <div class="as-num">50</div>
+          <div class="as-label">años de investigación dermatológica ininterrumpida</div>
+          <div class="as-src">Fuente: Amway Global</div>
+        </div>
+        <div class="as">
+          <div class="as-num">Top 10</div>
+          <div class="as-label">marcas de cuidado de piel premium del mundo</div>
+          <div class="as-src">Fuente: Euromonitor International</div>
+        </div>
+        <div class="as">
+          <div class="as-num">única</div>
+          <div class="as-label">marca de belleza respaldada por Nutrilite™, la marca #1 en vitaminas del mundo</div>
+          <div class="as-src">Fuente: Global Database 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="opp-cta">
+  <div class="max-w">
+    <div class="eyebrow" style="justify-content:center;color:var(--gold-lt)">¿Querés saber más?</div>
+    <h2>Empezá con lo que necesitás.<br>Sin compromisos raros.</h2>
+    <p>Hablemos sin presión. Te cuento qué productos son mejores para tu situación y, si te interesa, cómo podés también generar ingresos con esto desde Argentina.</p>
+    <div class="cta-btns">
+      <a class="btn-wa" href="https://wa.me/message/AJSJZZ52B2J2D1" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribime por WhatsApp
+      </a>
+      <a class="btn-ghost-w" href="amway-negocio.html">Ver el sistema de ganancias →</a>
+      <a class="btn-red" href="https://amway.com.ar/german" target="_blank">Ver catálogo →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-brand">Germán Tagliaferri · Amway Argentina</div>
+  <div class="f-links">
+    <a href="https://amway.com.ar/german" target="_blank">Tienda</a>
+    <a href="https://wa.me/message/AJSJZZ52B2J2D1" target="_blank">WhatsApp</a>
+    <a href="https://linkedin.com/in/gertaglia" target="_blank">LinkedIn</a>
+    <a href="amway-negocio.html">Sistema de Ganancias</a>
+  </div>
+  <div class="f-legal">© 2025 · Empresario Independiente Amway Argentina</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-130) cur=s.id; });
+  navAs.forEach(a=>{ a.style.color=a.getAttribute('href')==='#'+cur?'var(--gold-lt)':''; });
+});
+</script>
+</body>
+</html>
